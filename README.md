@@ -1,2 +1,2 @@
 # python_app_GUI
-pythonのGUIアプリケーション
+pythonのGUIアプリケーションを作ってみるだけのリポジトリ
