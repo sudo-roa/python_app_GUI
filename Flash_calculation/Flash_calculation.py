@@ -108,12 +108,16 @@ scale_keta = tk.Scale(root,
             tickinterval=2)        # 目盛りの分解能(初期値0で表示なし)
 
 #ウィンドウ内の配置
-#     question
-#     [start]
-#  [entry]  [answer]
-#     message
-# speed  [scale_speed]
-# kazu   [scale_kazu]
+#########################
+#        question       # 
+#        [start]        #
+#   [entry]  [answer]   #
+#        message        #
+#  speed  [scale_speed] #
+#  kazu   [scale_kazu]  #
+#  keta   [scale_keta]  #
+#########################
+
 #2列
 root.columnconfigure(0, weight=1)
 root.columnconfigure(1, weight=1)
