@@ -1,0 +1,12 @@
+@startuml Calculator
+
+start
+:numflag=0\nzeroflag=0\ndotflag=0\ncalcflag=0;
+if(input?)then(num(1~9))
+else(num)
+
+
+end
+
+
+@enduml
