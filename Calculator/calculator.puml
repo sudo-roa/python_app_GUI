@@ -1,11 +1,11 @@
-@startuml Calculator state machine diagram
+@startuml Calculator_state_machine_diagram
 
 ' Initial_state 最初の状態
 ' State1 initial_state(num(1~9))
 ' State2 initial_state(num(0))
 ' State3 state1(dot) and state2(dot)
 ' State3 state3(num(0)) and state3(num(1~9))
-' State4 state1(calc) and state2(calc) and state3(calc)
+' State4 state1(ope) and state2(ope) and state3(ope)
 
 [*] --> Calucutation : Power ON
 
@@ -14,7 +14,7 @@ State Calucutation{
     Initial_state : numflag=0
     Initial_state : zeroflag=0
     Initial_state : dotflag=0
-    Initial_state : calcflag=0
+    Initial_state : opeflag=0
     Initial_state : num1=no value
     Initial_state : num2=no value
     Initial_state -> Initial_state : CR()
@@ -26,7 +26,7 @@ State Calucutation{
     State1 : numflag=1
     State1 : zeroflag=0
     State1 : dotflag=0
-    State1 : calcflag=0
+    State1 : opeflag=0
     State1 : num1=have a value
     State1 : num2=no value
 
@@ -35,7 +35,7 @@ State Calucutation{
     State2 : numflag=1
     State2 : zeroflag=1
     State2 : dotflag=0
-    State2 : calcflag=0
+    State2 : opeflag=0
     State2 : num1=have a value
     State2 : num2=no value
 
@@ -45,20 +45,20 @@ State Calucutation{
     State3 : numflag=1
     State3 : zeroflag=0
     State3 : dotflag=1
-    State3 : calcflag=0
+    State3 : opeflag=0
     State3 : num1=have a value(if 1.->1)
     State3 : num2=no value
     State3 -> State3 : num(0)
     State3 -> State3 : num(1~9)
 
-    State1 ---> State4 : calc()
-    State2 ---> State4 : calc()
-    State3 --> State4 : calc()
+    State1 ---> State4 : ope()
+    State2 ---> State4 : ope()
+    State3 --> State4 : ope()
     State4 -> Initial_state : CR()
     State4 : numflag=2
     State4 : zeroflag=0
     State4 : dotflag=0
-    State4 : calcflag=true(1:+, 2:-, 3:*, 4:/)
+    State4 : opeflag=true(1:+, 2:-, 3:*, 4:/)
     State4 : num1=have a value
     State4 : num2=no value
 
@@ -69,7 +69,7 @@ State Calucutation{
     State1.2 : numflag=3
     State1.2 : zeroflag=0
     State1.2 : dotflag=0
-    State1.2 : calcflag=true(1:+, 2:-, 3:*, 4:/)
+    State1.2 : opeflag=true(1:+, 2:-, 3:*, 4:/)
     State1.2 : num1=have a value
     State1.2 : num2=have a value
 
@@ -78,7 +78,7 @@ State Calucutation{
     State2.2 : numflag=3
     State2.2 : zeroflag=1
     State2.2 : dotflag=0
-    State2.2 : calcflag=0
+    State2.2 : opeflag=true(1:+, 2:-, 3:*, 4:/)
     State2.2 : num1=have a value
     State2.2 : num2=have a value
     
@@ -88,7 +88,7 @@ State Calucutation{
     State3.2 : numflag=3
     State3.2 : zeroflag=0
     State3.2 : dotflag=1
-    State3.2 : calcflag=0
+    State3.2 : opeflag=true(1:+, 2:-, 3:*, 4:/)
     State3.2 : num1=have a value(if 1.->1)
     State3.2 : num2=have a value
     State3.2 -> State3.2 : num(0)
@@ -101,10 +101,11 @@ State Calucutation{
     State5 : numflag=2
     State5 : zeroflag=0
     State5 : dotflag=0
-    State5 : calcflag=0
+    State5 : opeflag=true(1:+, 2:-, 3:*, 4:/)
     State5 : num1=have a value
     State5 : num2=have a value
-    State5 -> State4 : calc()
+    State5 -> State4 : ope()
+    State5 -> State5 : eq()
 
 }
 
