@@ -53,21 +53,55 @@ State Calucutation{
     State2 ---> State4 : calc()
     State3 --> State4 : calc()
     State4 -> Initial_state : CR()
-    State4 : numflag=1
+    State4 : numflag=2
     State4 : zeroflag=0
-    State4 : dotflag=1
+    State4 : dotflag=0
     State4 : calcflag=true(1:+, 2:-, 3:*, 4:/)
     State4 : num1=have a value
     State4 : num2=no value
 
-    State4 --> State5 : num(1~9)
+    State4 --> State1.2 : num(1~9)
+    State1.2 -> Initial_state : CR()
+    State1.2 : numflag=3
+    State1.2 : zeroflag=0
+    State1.2 : dotflag=0
+    State1.2 : calcflag=true(1:+, 2:-, 3:*, 4:/)
+    State1.2 : num1=have a value
+    State1.2 : num2=have a value
+
+    State4 --> State2.2 : num(0)
+    State2.2 -> Initial_state : CR()
+    State2.2 : numflag=3
+    State2.2 : zeroflag=1
+    State2.2 : dotflag=0
+    State2.2 : calcflag=0
+    State2.2 : num1=have a value
+    State2.2 : num2=have a value
+    
+    State1.2 --> State3.2 : dot()
+    State2.2 --> State3.2 : dot()
+    State3.2 -> Initial_state : CR()
+    State3.2 : numflag=3
+    State3.2 : zeroflag=0
+    State3.2 : dotflag=1
+    State3.2 : calcflag=0
+    State3.2 : num1=have a value(if 1.->1)
+    State3.2 : num2=have a value
+    State3.2 -> State3.2 : num(0)
+    State3.2 -> State3.2 : num(1~9)
+
+    State1.2 --> State5 : eq()
+    State2.2 --> State5 : eq()
+    State3.2 --> State5 : eq()
     State5 -> Initial_state : CR()
     State5 : numflag=2
     State5 : zeroflag=0
     State5 : dotflag=0
-    State5 : calcflag=true(1:+, 2:-, 3:*, 4:/)
+    State5 : calcflag=0
     State5 : num1=have a value
     State5 : num2=have a value
+    State5 -> State4 : calc()
+
 }
 
 Calucutation --> [*] : Power OFF
