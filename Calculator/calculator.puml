@@ -20,6 +20,8 @@ State Calucutation{
     Initial_state -> Initial_state : CR()
 
     Initial_state --> State1 : num(1~9)
+    State1 -> State1 : num(1~9)
+    State1 -> State1 : num(0)
     State1 -> Initial_state : CR()
     State1 : numflag=1
     State1 : zeroflag=0
@@ -61,6 +63,8 @@ State Calucutation{
     State4 : num2=no value
 
     State4 --> State1.2 : num(1~9)
+    State1.2 -> State1.2 : num(1~9)
+    State1.2 -> State1.2 : num(0)
     State1.2 -> Initial_state : CR()
     State1.2 : numflag=3
     State1.2 : zeroflag=0
