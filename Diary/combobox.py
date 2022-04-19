@@ -1,5 +1,5 @@
 import tkinter as tk
-import tkinter.ttk as ttk
+import tkinter.ttk as ttk   # Comboboxのインポートに必要
 from tkinter import messagebox
 
 # リスト項目の作成（config）
@@ -16,17 +16,17 @@ root.title('Comboboxのテスト')
 
 # Comboboxウィジェットの生成と配置
 combo = ttk.Combobox(root,
-                    state='readonly',
-                    values=weather)
-combo.current(1)
+                    state='readonly',   # テキストフィールドへの直接入力を禁止
+                    values=weather)   # リスト項目の設定
+combo.current(1)   # 晴れに設定
 combo.grid(row=0, column=0, columnspan=2)
 
 # ハンドラ関数
 def click_get():
-    messagebox.showinfo('message', combo.get())
+    messagebox.showinfo('message', combo.get())   # 設定項目の取得
 
 def click_set():
-    combo.current(5)
+    combo.current(5)   # 5の台風に設定
 
 # Buttonウィジェットの生成と配置
 button_1 = tk.Button(root, text='show', command=click_get)
