@@ -7,15 +7,15 @@ root.geometry('250x150')
 root.title('Textテスト')
 
 # Textウィジェットの生成と配置
-text = tk.Text(root, width=30, height=6)
+text = tk.Text(root, width=30, height=6)   # 横30文字縦6文字のテキストフィールドの生成
 text.grid(row=0, column=0, columnspan=2)
 
 # ハンドラ関数
 def click_get():
-    messagebox.showinfo('message', text.get('1.0', 'end'))
+    messagebox.showinfo('message', text.get('1.0', 'end'))   # テキストフィールド内の１文字目から最後までを取得
 def click_set():
-    text.delete('1.0', 'end')
-    text.insert('1.0', 'あいうえお\nかきくけこ\nさしすせそ')
+    text.delete('1.0', 'end')   # テキストフィールド内の1文字目から最後までを削除
+    text.insert('1.0', 'あいうえお\nかきくけこ\nさしすせそ')   # テキストフィールドの1文字目から文字列を挿入
 
 # Buttonウィジェットの生成と配置
 button_1 = tk.Button(root, text='get', command=click_get)
